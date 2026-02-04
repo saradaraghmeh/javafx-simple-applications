@@ -1,0 +1,55 @@
+import javafx.application.*;
+import javafx.scene.*;
+import javafx.scene.layout.*;
+import javafx.scene.control.*;
+import javafx.scene.paint.*;
+import javafx.scene.shape.*;
+import javafx.stage.*;
+
+public class ControlCircle extends Application{
+	public void start (Stage primaryStage) {
+		BorderPane root = new BorderPane();
+		Circle circle = new Circle(10);
+		circle.setFill(Color.WHITE);
+		circle.setStroke(Color.BLACK);
+		Button bigger = new Button ("Bigger");
+		Button smaller = new Button ("Smaller");
+		HBox h1 = new HBox (bigger , smaller);
+		h1.setSpacing(50);
+		RadioButton red = new RadioButton("RED");
+		RadioButton yellow = new RadioButton("YELLOW");
+		RadioButton blue = new RadioButton("BLUE");
+		ToggleGroup tg = new ToggleGroup();
+		red.setToggleGroup(tg);
+		yellow.setToggleGroup(tg);
+		blue.setToggleGroup(tg);
+		HBox h2 = new HBox (red , yellow , blue);
+		h2.setSpacing(10);
+		bigger.setOnAction(e->{
+			circle.setRadius(circle.getRadius() + 10);
+		});
+		smaller.setOnAction(e->{
+			circle.setRadius(circle.getRadius() - 10);
+		});
+		red.setOnAction(e->{
+			circle.setFill(Color.RED);
+		});
+		yellow.setOnAction(e->{
+			circle.setFill(Color.YELLOW);
+		});
+		blue.setOnAction(e->{
+			circle.setFill(Color.BLUE);
+		});
+		VBox v1 = new VBox (h1 , h2);
+		root.setCenter(circle);
+		root.setBottom(v1);
+		Scene scene = new Scene (root , 300 , 300);
+		primaryStage.setTitle("circle control");
+		primaryStage.setScene(scene);
+		primaryStage.show();
+	}
+	
+	public static void main (String [] args) {
+		launch(args);
+	}
+}
