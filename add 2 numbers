@@ -1,0 +1,57 @@
+import javafx.application.*;
+import javafx.geometry.*;
+import javafx.scene.*;
+import javafx.scene.control.*;
+import javafx.scene.layout.*;
+import javafx.scene.paint.*;
+import javafx.scene.shape.*;
+import javafx.scene.text.*;
+import javafx.stage.*;
+
+public class ADD2NUMBERS extends Application {
+	double x=0 , y=0;
+	@Override
+	public void start(Stage primaryStage) throws Exception {
+		Font f = Font.font(STYLESHEET_CASPIAN, FontWeight.BOLD,15);
+		TextField t1 = new TextField ();
+		Label l1 = new Label ("number 1 : ");
+		l1.setFont(f);
+		HBox h1 = new HBox (l1 , t1);
+		TextField t2 = new TextField ();
+		Label l2 = new Label ("number 2 : ");
+		l2.setFont(f);
+		HBox h2 = new HBox (l2 , t2);
+		Label l3 = new Label ("");
+		l3.setFont(f);
+		Button add = new Button ("ADD");
+		add.setFont(f);
+		add.setStyle("-fx-background-color : grey;");
+		add.setOnAction(e-> {
+			x = Double.parseDouble(t1.getText());
+			y=Double.parseDouble(t2.getText());
+			l3.setText((x+y)+"");
+		});
+		VBox v = new VBox (h1 , h2 , add , l3);
+		v.setSpacing(10);
+		v.setPadding(new Insets (10) );
+		Circle c = new Circle (190);
+		c.setStroke(Color.WHITE);
+		c.setFill(Color.WHITE);
+		Circle c2 = new Circle (140);
+		c2.setStroke(Color.LIGHTPINK);
+		c2.setFill(Color.LIGHTPINK);
+		Circle c3 = new Circle (90);
+		c3.setStroke(Color.WHITE);
+		c3.setFill(Color.WHITE);
+		StackPane p = new StackPane ();
+		p.getChildren().addAll(c,c2,c3,v);
+		p.setStyle("-fx-background-color : lightpink");
+		Scene s = new Scene (p , 400 , 400);
+		primaryStage.setScene(s);
+		primaryStage.setTitle("calculator ig");
+		primaryStage.show();
+	}
+	public static void main (String [] a) {
+		launch(a);
+	}
+}
