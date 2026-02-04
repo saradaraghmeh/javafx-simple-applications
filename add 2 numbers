@@ -9,10 +9,9 @@ import javafx.scene.text.*;
 import javafx.stage.*;
 
 public class ADD2NUMBERS extends Application {
-	double x=0 , y=0;
-	@Override
-	public void start(Stage primaryStage) throws Exception {
-		Font f = Font.font(STYLESHEET_CASPIAN, FontWeight.BOLD,15);
+	
+	public void start (Stage primaryStage) {
+		Font f = Font.font("Arial" , FontWeight.BOLD ,15);
 		TextField t1 = new TextField ();
 		Label l1 = new Label ("number 1 : ");
 		l1.setFont(f);
@@ -27,6 +26,7 @@ public class ADD2NUMBERS extends Application {
 		add.setFont(f);
 		add.setStyle("-fx-background-color : grey;");
 		add.setOnAction(e-> {
+			double x , y;
 			x = Double.parseDouble(t1.getText());
 			y=Double.parseDouble(t2.getText());
 			l3.setText((x+y)+"");
@@ -48,7 +48,7 @@ public class ADD2NUMBERS extends Application {
 		p.setStyle("-fx-background-color : lightpink");
 		Scene s = new Scene (p , 400 , 400);
 		primaryStage.setScene(s);
-		primaryStage.setTitle("calculator ig");
+		primaryStage.setTitle("add 2 numbers");
 		primaryStage.show();
 	}
 	public static void main (String [] a) {
