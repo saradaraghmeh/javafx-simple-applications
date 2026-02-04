@@ -1,0 +1,73 @@
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
+import javafx.application.Application;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.ToggleGroup;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.*;
+import javafx.stage.Stage;
+
+public class TrafficLight extends Application {
+	
+	public void start (Stage a){
+		Rectangle r = new Rectangle(200,300);
+		r.setFill(Color.GREY);
+		r.setStroke(Color.BLACK);
+		BorderPane p = new BorderPane ();
+		Circle red = new Circle (40);
+		red.setFill(Color.WHITE);
+		red.setStroke(Color.BLACK);
+		Circle yellow = new Circle (40);
+		yellow.setFill(Color.WHITE);
+		yellow.setStroke(Color.BLACK);
+		Circle green = new Circle (40);
+		green.setFill(Color.WHITE);
+		green.setStroke(Color.BLACK);
+		VBox v = new VBox (red , yellow , green);
+		v.setAlignment(Pos.CENTER);
+		v.setSpacing(10);
+		StackPane sp = new StackPane (r , v);
+		p.setCenter(sp);
+		Font f = Font.font("Arial", FontWeight.BOLD , 12);
+		RadioButton r1 = new RadioButton ("red");
+		r1.setFont(f);
+		r1.setOnAction(e->{
+			red.setFill(Color.RED);
+			yellow.setFill(Color.WHITE);
+			green.setFill(Color.WHITE);
+		});
+		RadioButton r2 = new RadioButton ("yellow");
+		r2.setFont(f);
+		r2.setOnAction(e->{
+			yellow.setFill(Color.YELLOW);
+			red.setFill(Color.WHITE);
+			green.setFill(Color.WHITE);
+		});
+		RadioButton r3 = new RadioButton ("green");
+		r3.setFont(f);
+		r3.setOnAction(e->{
+			green.setFill(Color.GREEN);
+			yellow.setFill(Color.WHITE);
+			red.setFill(Color.WHITE);
+		});
+		ToggleGroup t = new ToggleGroup ();
+		r1.setToggleGroup(t);
+		r2.setToggleGroup(t);
+		r3.setToggleGroup(t);
+		HBox h = new HBox (r1,r2,r3);
+		h.setAlignment(Pos.CENTER);
+		h.setSpacing(10);
+		p.setBottom(h);
+		Scene s = new Scene (p ,400 , 400);
+		a.setScene(s);
+		a.show();
+	}
+	
+	public static void main (String [] a) {
+		launch(a);
+	}
+	
+}
